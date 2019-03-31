@@ -37,18 +37,35 @@ $(".sport").on("click", function() {
    // console.log(x)
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + x + "&api_key=qz9Pt0PRRE8zgJLxiLo8sxiIEZQox6Ro&limit=10";
     $.ajax({url:queryURL,method: "GET"})
-    .done(function(response){
-        console.log(response);
+    .then(function(response){
+       // console.log(response);
         
         for (var j=0; j <response.data.length; j++) {
             var sportDiv = $("<div>");
             var p = $("<h6>").text("Rating: " + response.data[j].rating);
             var sportImage = $("<img>"); 
+            sportImage.addClass("giphy-sport-image");
+			sportImage.attr("state", "still");
+			sportImage.attr("still-data", response.data[j].images.fixed_height_still.url);
+			sportImage.attr("animated-data", response.data[j].images.fixed_height.url);
             sportImage.attr("src",response.data[j].images.fixed_height_still.url);
             sportDiv.append(p);
             sportDiv.append(sportImage); 
-            $("#gifs-go-here").prepend(sportDiv);
+            $("#gifs-go-here").append(sportDiv);
         }
+
+        $(".giphy-sport-image").on("click", function(){
+           // console.log(this);
+            if($(this).attr("state") === "still") {
+                $(this).attr("state", "animated");
+                $(this).attr("src", $(this).attr("animated-data"));
+            }
+
+            else {
+                $(this).attr("state", "still");
+                $(this).attr("src", $(this).attr("still-data"));
+            }})
+            
     })
     })
 
@@ -69,3 +86,4 @@ $(".sport").on("click", function() {
 // make the user's button append to the page after it is created
 
 // make sure to clear out the div in the HTML prior to running each call back function
+
