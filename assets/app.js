@@ -29,18 +29,22 @@ function renderButtons() {
 
 renderButtons();
 
+// event listener to add gifs to page, based on button you click
+
 $(".sport").on("click", function() {
+    $("#gifs-go-here").empty();
     var x = $(this).data("name");
-    console.log(x)
+   // console.log(x)
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + x + "&api_key=qz9Pt0PRRE8zgJLxiLo8sxiIEZQox6Ro&limit=10";
     $.ajax({url:queryURL,method: "GET"})
     .done(function(response){
         console.log(response);
+        
         for (var j=0; j <response.data.length; j++) {
             var sportDiv = $("<div>");
             var p = $("<h6>").text("Rating: " + response.data[j].rating);
             var sportImage = $("<img>"); 
-            sportImage.attr("src",response.data[j].images.fixed_height.url);
+            sportImage.attr("src",response.data[j].images.fixed_height_still.url);
             sportDiv.append(p);
             sportDiv.append(sportImage); 
             $("#gifs-go-here").prepend(sportDiv);
