@@ -34,15 +34,15 @@ renderButtons();
 $(".sport").on("click", function() {
     $("#gifs-go-here").empty();
     var x = $(this).data("name");
-   // console.log(x)
+    console.log(x)
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + x + "&api_key=qz9Pt0PRRE8zgJLxiLo8sxiIEZQox6Ro&limit=10";
     $.ajax({url:queryURL,method: "GET"})
     .then(function(response){
-       // console.log(response);
+        console.log(response);
         
         for (var j=0; j <response.data.length; j++) {
             var sportDiv = $("<div>");
-            var p = $("<h6>").text("Rating: " + response.data[j].rating);
+            var p = $("<h6>").html("Rating: " + response.data[j].rating + "<br>" + "Title: " + response.data[j].title + "<br>" + "Source: " + response.data[j].source);
             var sportImage = $("<img>"); 
             sportImage.addClass("giphy-sport-image");
 			sportImage.attr("state", "still");
