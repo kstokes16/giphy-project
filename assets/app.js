@@ -1,27 +1,52 @@
-// create topics variable containing our string of buttons
-var topics = ["football", "baseball", "basketball", "soccer", "hockey", "lacrosse", "swimming", "golf", "racing", "weightlifting", "cheerleading", "skateboarding", "skiing"];
+// create topics variable containing our string of topics
+var listOfSports = ["football", "baseball", "basketball", "soccer", "hockey", "lacrosse", "swimming", "golf", "racing", "weightlifting", "cheerleading", "skateboarding", "skiing"];
 
 // display the topics on the screen
 
-function showButtons () {
-    $("#button-holder").empty;
+// Function for displaying movie data
+function renderButtons() {
 
-for (i=0; i < topics.length; i++) {
-            // Then dynamicaly generating buttons for each movie in the array.
-          // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
-          var newButton = $("<button>");
-          // Adding a class
-          newButton.addClass("sport");
-          // Adding a data-attribute with a value of the movie at index i
-          newButton.attr("data-name", topics[i]);
-          // Providing the button's text with a value of the movie at index i
-          newButton.text(topics[i]);
-          // Adding the button to the HTML
-          $("#button-holder").append(newButton);
-        }
+    // Deleting the movie buttons prior to adding new movie buttons
+    // (this is necessary otherwise we will have repeat buttons)
+    $("#button-holder").empty();
+
+    // Looping through the array of sports
+    for (var i = 0; i < listOfSports.length; i++) {
+
+      // Then dynamicaly generating buttons for each movie in the array.
+      // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
+      var newButton = $("<button>");
+      // Adding a class
+      newButton.addClass("sport");
+      // Adding a data-attribute with a value of the movie at index i
+      newButton.attr("data-name", listOfSports[i]);
+      // Providing the button's text with a value of the movie at index i
+      newButton.text(listOfSports[i]);
+      // Adding the button to the HTML
+      $("#button-holder").append(newButton);
     }
+  }
 
-showButtons();
+renderButtons();
+
+$(".sport").on("click", function() {
+    var x = $(this).data("name");
+    console.log(x)
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + x + "&api_key=qz9Pt0PRRE8zgJLxiLo8sxiIEZQox6Ro&limit=10";
+    $.ajax({url:queryURL,method: "GET"})
+    .done(function(response){
+        console.log(response);
+        for (var j=0; j <response.data.length; j++) {
+            var sportDiv = $("<div>");
+            var p = $("<h6>").text("Rating: " + response.data[j].rating);
+            var sportImage = $("<img>"); 
+            sportImage.attr("src",response.data[j].images.fixed_height.url);
+            sportDiv.append(p);
+            sportDiv.append(sportImage); 
+            $("#gifs-go-here").prepend(sportDiv);
+        }
+    })
+    })
 
 // establish variables needed to create our AJAX call and to get something to return from the GIPHY API
 
