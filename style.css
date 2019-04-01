@@ -1,0 +1,25 @@
+body {
+    background: url(https://web-fluendo.s3.amazonaws.com/static/img/longomatch/home/parallax/background/longomatch-slider-soccer.jpg);
+    background-size: cover;
+    color: white;
+}
+
+button {
+    background-color: purple;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+button:hover {
+    background-color: pink;
+}
+
+.jumbotron {
+    color: purple;
+    opacity: .5;
+}
+
+#user-input-form {
+    border: 5px solid whitesmoke;
+}
