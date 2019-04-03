@@ -1,25 +1,81 @@
 body {
-    background: url(https://web-fluendo.s3.amazonaws.com/static/img/longomatch/home/parallax/background/longomatch-slider-soccer.jpg);
-    background-size: cover;
-    color: white;
+    background: url(https://image.freepik.com/free-photo/green-grass-field-background-soccer-football-sports_64749-1823.jpg);
+    color: black;
+    opacity: 1;
 }
 
 button {
-    background-color: purple;
+    background-color: #2BA84A;
     margin-right: 15px;
     margin-bottom: 15px;
     padding: 10px;
 }
 
-button:hover {
-    background-color: pink;
+h1 {
+    color: white;
+}
+
+h2 {
+    color: #FCFFFC;
+}
+
+h3 {
+    color: white;
 }
 
 .jumbotron {
-    color: purple;
-    opacity: .5;
+    background-color: #C17C74;
+    opacity: 1;
 }
 
 #user-input-form {
     border: 5px solid whitesmoke;
+}
+
+.giphy-sport-image {
+    border: 8px solid grey;
+}
+
+.giphy-sport-image:hover {
+    border: 12px solid yellow;
+}
+
+.sport {
+    font-size: 20px;
+    color: white;
+    padding: 15px;
+    margin: 10px;
+}
+
+.sport:hover {
+    background-color: white;
+    color: #27661F;
+}
+
+h5 {
+    color: white;
+    padding: 5px;
+    margin-top: 50px;
+    font-size: 26px;
+}
+
+#add-a-sport {
+    background-color: #2BA84A;
+    color: white;
+}
+
+#add-a-sport:hover {
+    background-color: white;
+    color: #2ba84a;
+}
+
+label {
+    color: white;
+    font-size: 20px;
+    margin-top: 8px;
+}
+
+#user-input-form {
+    background-color: #C17C74;
+    border: 5px solid white;
 }
