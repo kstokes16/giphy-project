@@ -37,9 +37,8 @@ function showButtons() {
         showButtons();
       });
 
-
 // event listener to add gifs to page, based on button you click
-$(document).on("click","button", function(){
+$(document).on("click",".sport", function(){
 //$(".sport").on("click", function() {
   console.log("inside gif click");
     // make sure to clear out the div in the HTML prior to running each call back function
